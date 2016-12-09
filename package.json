@@ -27,5 +27,8 @@
     "tap-spec": "^4.1.1",
     "tape": "^4.6.2",
     "tape-watch": "^2.2.3"
+  },
+  "dependencies": {
+    "redux": "^3.6.0"
   }
 }
