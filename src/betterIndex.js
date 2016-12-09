@@ -1,3 +1,5 @@
+const { compose } = require('redux')
+
 /*
 - Percorre um range de numeros por exemplo, 1 - 100.
 - Printa o <numero> seguido da string "Fizz" se o numero é multiplo de 3.
@@ -33,10 +35,14 @@ let fbTest = function (number) {
   return retval
 }
 
-let generateRange = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => i + from)
+const generateRange = (from, to) => Array.from({ length: to - from + 1 }, (_, i) => i + from)
 
+const listFns = [fbFormatOutput, fbTest]
+
+const formatAndTest = compose(...listFns) // fbFormatOutput(fbTest(item)))
 
 let betterFizzBuzz = (from, to) => generateRange(from, to)
-  .map(item => fbFormatOutput(fbTest(item)))
+  .map(formatAndTest)
+  // .map(item => fbFormatOutput(fbTest(item)))
 
 betterFizzBuzz(100, 1000).forEach(fbPrint)
